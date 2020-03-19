@@ -12,10 +12,10 @@ public class Main {
         String ticker = "AAPL";
         System.out.println("Description: " + example.getDescription(ticker));
         System.out.println("Current Price: " + example.getCurrentPrice(ticker));
-        System.out.println("Monthly opening price history for the past five years: ");
-        List <BigDecimal> openingHistory = example.getFiveYearMonthlyPriceHistory(ticker);
-        for(int i=0;i<openingHistory.size();i++){
-            System.out.println(openingHistory.get(i));
+        example.getHistoricalData("APPL","BrandNew",5);
+        List <BigDecimal> priceHistory = example.getOpeningPriceHistory("BrandNew");
+        for(BigDecimal item : priceHistory){
+            System.out.println(item);
         }
     }
 }
