@@ -64,7 +64,7 @@ public class Scraper {
         }
         List <GsonFormat> formatted = new LinkedList<GsonFormat>();
 
-        for(int i=0; i<col.size()-6;i+=6){
+        for(int i=0; i<col.size()-6;i+=7){
             formatted.add(new GsonFormat(col.get(i),col.get(i+1),col.get(i+2),col.get(i+3)  ,col.get(i+4),col.get(i+5),col.get(i+6)));
         }
 
