@@ -14,7 +14,7 @@ public class Main {
         System.out.println("Current Price: " + example.getCurrentPrice(ticker));
 
 
-        System.out.println(example.getJson("GOOGL"));
+        System.out.println(example.getJson("GOOGL",5));
 
 
         //example.getHistoricalData("GOOGL","priceHistory",5);
