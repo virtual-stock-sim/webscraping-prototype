@@ -33,9 +33,9 @@ public class ScraperTest {
             JsonObject jo = new JsonObject();
             int y = r.nextInt(6);
             if (i != 0 && i != tickers.size()) {
-                TimeUnit.SECONDS.sleep(10 + y);
+                TimeUnit.SECONDS.wait(10);
             }
-            JsonArrays.add(scraper.getJson(tickers.get(i), 5));
+            JsonArrays.add(scraper.getDescriptionAndHistory(tickers.get(i), TimeInterval.ONEMONTH));
 
         }
     }
@@ -95,7 +95,6 @@ public class ScraperTest {
             }
         }
 
-
         assertEquals(descriptions.size(), 5);
         assertTrue(descriptions.get(0).contains("Transportation & Electronics, Health Care, and Consumer. The Safety & Industrial segment offers personal safety products, adhesives and tapes, abrasives, closure and masking systems"));
         assertTrue(descriptions.get(4).contains("Southwest Airlines Co. operates a passenger airline that provides scheduled air transportation services in the United States and near-international markets."));
@@ -107,12 +106,9 @@ public class ScraperTest {
 
 
 
-
-
-
     @Test//This test will take some time to do (~9 minutes)
          //works the same as setUp, but is meant to check to see if the scraper can handle a load of forty stocks
-        //written this (seperate Jsonarrays..ect...) way so it is easily uncommented to run other tests
+
 
     public void stressTest() throws InterruptedException, IOException {
         Random r = new Random();
@@ -122,7 +118,7 @@ public class ScraperTest {
             int y = r.nextInt(6);
             System.out.println("Testing next stock");
             if(i!=0 && i!=stressTickers.size()){TimeUnit.SECONDS.sleep(10+y); }
-            stressJsonArrays.add(scraper.getJson(stressTickers.get(i),5));
+            stressJsonArrays.add(scraper.getDescriptionAndHistory(stressTickers.get(i),TimeInterval.ONEMONTH));
         }
         assertEquals(stressJsonArrays.size(),40);
         System.out.println("done");
